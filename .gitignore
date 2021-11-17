@@ -1,0 +1,13 @@
+.vs/*
+Win32/*
+x64/*
+out/*
+libpcap-*.tar.gz
+libpcap-*/
+7za*.exe
+openssl-*.zip
+openssl-*/
+*.tar.gz
+pax_global_header
+win_flex_bison/
+win_flex_bison-*.zip

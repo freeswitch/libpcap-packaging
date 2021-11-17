@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>libpcap</ProjectName>
+    <RootNamespace>libpcap</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{EFFC9BFD-DE46-47E7-9EF1-564DC87E89A8}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="buildpackages.task" />
+  <Import Project="winflex-version.props" />
+  <Import Project="libpcap-version.props" />
+  <Import Project="openssl-version.props" />
+  <PropertyGroup Label="UserMacros" />
+  <Target Name="Build">
+    <MakeDir Directories="$(libpcapLibDir)/build-$(Platform)" />
+    <Exec Command='cmake .. -DCMAKE_GENERATOR_PLATFORM=$(Platform) -DOPENSSL_INCLUDE_DIR=$(BaseDir)openssl-$(OpenSSLVersion)\include\;$(BaseDir)openssl-$(OpenSSLVersion)\include_x86\ -DOPENSSL_ROOT_DIR=$(BaseDir)openssl-$(OpenSSLVersion)\binaries\$(Platform)\$(Configuration) -DCMAKE_CXX_STANDARD_LIBRARIES="crypt32.lib advapi32.lib user32.lib" -DCMAKE_C_STANDARD_LIBRARIES="crypt32.lib advapi32.lib user32.lib" -DLEX_EXECUTABLE=$(winflexLibDir)/win_flex.exe -DYACC_EXECUTABLE=$(winflexLibDir)/win_bison.exe -T v140' WorkingDirectory="$(libpcapLibDir)/build-$(Platform)" />
+    <MsBuild Projects="$(libpcapLibDir)\build-$(Platform)\pcap.sln" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
+  </Target>
+</Project>
