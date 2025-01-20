@@ -64,7 +64,7 @@ using System.Diagnostics;
                     File.Copy("libpcap-" + package + @"\pcap\" + f, package_root + @"\include\pcap\" + f);
                 }
 
-                ZipFile.CreateFromDirectory(@"$(BaseDir)out\packages\" + package + @"-headers\", @"$(BaseDir)out\" + package + @"-headers.zip".ToLower(), CompressionLevel.Optimal, false);
+                ZipFile.CreateFromDirectory(@"$(BaseDir)out\packages\" + package + @"-headers\", @"$(BaseDir)out\" + package + @"_$(libpcapBuildNumber)" + @"-headers.zip".ToLower(), CompressionLevel.Optimal, false);
             }
 
             package_root = @"$(BaseDir)out\packages\libpcap-$(libpcapVersion)-binaries-$(Platform)-$(Configuration)\" + package;
@@ -83,7 +83,7 @@ using System.Diagnostics;
                     }
                 }
 
-                ZipFile.CreateFromDirectory(@"$(BaseDir)out\packages\" + package + @"-binaries-$(Platform)-$(Configuration)\", @"$(BaseDir)out\"+ package + @"-binaries-$(Platform)-$(Configuration).zip".ToLower(), CompressionLevel.Optimal, false);
+                ZipFile.CreateFromDirectory(@"$(BaseDir)out\packages\" + package + @"-binaries-$(Platform)-$(Configuration)\", @"$(BaseDir)out\"+ package + @"_$(libpcapBuildNumber)" + @"-binaries-$(Platform)-$(Configuration).zip".ToLower(), CompressionLevel.Optimal, false);
             }
 
             return true;
