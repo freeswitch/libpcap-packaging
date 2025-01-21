@@ -4,10 +4,14 @@ on:
   workflow_dispatch:
   push:
     branches:
+      - master
       - v1.10.3
+      - v1.10.4
   pull_request:
     branches:
+      - master
       - v1.10.3
+      - v1.10.4
 
 jobs:
   build:
