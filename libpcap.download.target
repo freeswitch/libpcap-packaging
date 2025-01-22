@@ -32,6 +32,7 @@
            outputfilename="" 
            extractto="$(BaseDir)"
       />
+      <Copy SourceFiles="$(BaseDir)CMakeLists.txt.patched" DestinationFiles="$(BaseDir)libpcap-libpcap-$(libpcapVersion)/CMakeLists.txt" />
   </Target> 
 
   <PropertyGroup>

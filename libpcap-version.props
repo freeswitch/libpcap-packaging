@@ -4,7 +4,8 @@
     <Import Project="basedir.props" Condition=" '$(BaseDirImported)' == ''"/>
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
-    <libpcapVersion>1.10.3</libpcapVersion>
+    <libpcapVersion>1.10.4</libpcapVersion>
+	<libpcapBuildNumber>0</libpcapBuildNumber>
     <libpcapLibDir>$(BaseDir)libpcap-libpcap-$(libpcapVersion)</libpcapLibDir>
   </PropertyGroup>
   <PropertyGroup>
