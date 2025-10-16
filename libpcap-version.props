@@ -5,7 +5,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
     <libpcapVersion>1.10.4</libpcapVersion>
-	<libpcapBuildNumber>0</libpcapBuildNumber>
+	<libpcapBuildNumber>1</libpcapBuildNumber>
     <libpcapLibDir>$(BaseDir)libpcap-libpcap-$(libpcapVersion)</libpcapLibDir>
   </PropertyGroup>
   <PropertyGroup>
